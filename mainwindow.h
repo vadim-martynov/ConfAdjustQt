@@ -17,12 +17,12 @@
 
 
 
-#define TITLE_MAIN          "ConfAdjustQt v.2.0.1"
+#define TITLE_MAIN          "ConfAdjustQt v.2.0.2"
 /*
 * 2.0.1 betta
+* 2.0.2 force Win CrLf in xmllibrary
 *
-* release 2017-11-09
-
+* release 2017-12-06
 */
 
 

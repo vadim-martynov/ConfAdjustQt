@@ -371,7 +371,7 @@ QString CCfgXML::makeParamLine(const qint8 &indent, const QString &param, const 
         {
             v = "\"" + v.mid(1) + "\"";
         }
-        s += param + " = " + v + "\n";
+        s += param + " = " + v + lineTerm();
         //
         s = symbOn(s);
         //
@@ -388,7 +388,7 @@ QString CCfgXML::makeKeyLine(const qint8 &indent, const QString &param)
     if(xmlOutput)
         s += "\t<n n=\"" + param + "\">\n";
     else
-        s += "[" + param + "]\n";
+        s += "[" + param + "]" + lineTerm();
     return s;
 }
 
@@ -401,7 +401,16 @@ QString CCfgXML::makeEndLine(const qint8 &indent, const QString &param)
     if(xmlOutput)
         s += "\t</n>\n";
     else
-        s += "[#" + param + "]\n";
+        s += "[#" + param + "]" + lineTerm();
 
     return s;
+}
+
+QString CCfgXML::lineTerm()
+{
+#ifdef WIN32
+    return "\n";
+#else
+    return "\r\n";
+#endif
 }

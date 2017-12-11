@@ -15,17 +15,22 @@
 #define EXT_INI         "ini"
 // ////////
 
-// edit:        16.06.2016
-// add:         QByteArray initData;
-// edit:   11.08.2016
-// add:         EXT_INI
-// correct:     toXml
-// edit:   29.08.2016
-// add:         cfgMap.clear();
-// edit:   09.11.2017
-// add:         symbOff(), symbOn();
-// last edit:   16.11.2017
-// correct:     add tab (\tempty);
+/*
+ *
+ * edit:        16.06.2016
+ * add:         QByteArray initData;
+ * edit:   11.08.2016
+ * add:         EXT_INI
+ * correct:     toXml
+ * edit:   29.08.2016
+ * add:         cfgMap.clear();
+ * edit:   09.11.2017
+ * add:         symbOff(), symbOn();
+ * edit:   16.11.2017
+ * correct:     add tab (\tempty);
+ * last edit: 06.12.2017
+ * correct:     force Win CrLf for conf output in Linux
+*/
 
 class CCfgXML
 {
@@ -56,6 +61,7 @@ public:
 
     QString symbOn(const QString &s);
     QString symbOff(const QString &s);
+    QString lineTerm();
 };
 
 class CCfgConf : public CCfgXML
