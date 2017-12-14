@@ -249,6 +249,7 @@ void MainWindow::SetStart(QString newValue)
         if(ui->lwTerm->item(i)->isSelected())
         {
             CCfgConf item;
+            item.SetOutputEndLine(EL_WIN);
             tmpItem.name = ui->lwTerm->item(i)->text();
             QString path = GetPath(term[tmpItem.name].name);
             item.parseFile(path);

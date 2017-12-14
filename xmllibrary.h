@@ -13,6 +13,14 @@
 #define RU_KOI          "KOI8-R"
 #define EXT_XML         "xml"
 #define EXT_INI         "ini"
+
+enum EndLine
+{
+    EL_AUTO = 0,
+    EL_WIN,
+    EL_UNIX
+};
+
 // ////////
 
 /*
@@ -28,8 +36,10 @@
  * add:         symbOff(), symbOn();
  * edit:   16.11.2017
  * correct:     add tab (\tempty);
- * last edit: 06.12.2017
+ * edit:   06.12.2017
  * correct:     force Win CrLf for conf output in Linux
+ * last edit: 13.12.2017
+ * add:         SetOutputEndLine() (auto & manual endLine management);
 */
 
 class CCfgXML
@@ -44,9 +54,14 @@ protected:
     quint8 vectorSize;
     bool xmlOutput;
     QMap<QString, QString> cfgMap;
+    quint8 endLineMode;
+
     QString makeParamLine(const qint8 &indent, const QString &param, const QString &value);
     QString makeKeyLine(const qint8 &indent, const QString &param);
     QString makeEndLine(const qint8 &indent, const QString &param);
+    QString symbOn(const QString &s);
+    QString symbOff(const QString &s);
+    QString lineTerm();
 
 public:
     CCfgXML();
@@ -58,10 +73,7 @@ public:
     void writeFile(const QString &filePath);
     QMap<QString, QString> GetMap();
     void SetMap(const QMap<QString, QString> &srcMap);
-
-    QString symbOn(const QString &s);
-    QString symbOff(const QString &s);
-    QString lineTerm();
+    void SetOutputEndLine(quint8 endLine);
 };
 
 class CCfgConf : public CCfgXML
